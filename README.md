@@ -20,42 +20,40 @@ All styles written in CSS and are in css/index.css
 ## Usage
 
 ```javascript
+import React, { Component } from 'react'
 import Dialog from 'react-dialog'
-class Example extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            isDialogOpen: false
+import 'react-dialog/css/index.css'
+
+class Example extends Component {
+  state = {
+    isDialogOpen: false
+  }
+
+  openDialog = () => this.setState({ isDialogOpen: true })
+
+  handleClose = () => this.setState({ isDialogOpen: false })
+
+  render() {
+    return (
+      <div className="container">
+        <button type="button" onClick={this.openDialog}>Open Dialog</button>
+        {this.state.isDialogOpen &&
+          <Dialog
+            title="Dialog Title"
+            modal
+            onClose={this.handleClose}
+            buttons={[{
+              text: 'Close',
+              onClick: () => this.handleClose()
+            }]}
+          >
+            <h1>Dialog Content</h1>
+            <p>More Content. Anything goes here</p>
+          </Dialog>
         }
-    }
-
-    openDialog = () => this.setState({ isDialogOpen: true })
-
-    handleClose = () => this.setState({ isDialogOpen: false })
-
-    render() {
-        return (
-            <div className="container">
-                <button type="button" onClick={this.openDialog}>Open Dialog</button>
-                {
-                    this.state.isDialogOpen &&
-                    <Dialog
-                        title="Dialog Title"
-                        modal={true}
-                        onClose={this.handleClose}
-                        buttons={
-                            [{
-                                text: "Close",
-                                onClick: () => this.handleClose()
-                            }]
-                        }>
-                        <h1>Dialog Content</h1>
-                        <p>More Content. Anything goes here</p>
-                    </Dialog>
-                }
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 ```
 
@@ -126,6 +124,23 @@ class Example extends React.Component {
  - `Function`
  - default: `null`
  - Function that will be triggered whenever there is a close event.
+
+#### props.position
+
+```
+    {
+        x: number,
+        y: number
+    }
+ ```
+ - default: center of the screen:
+```
+    {
+        x: -250, // -width / 2
+        y: -150 // -height / 2
+    }
+ ```
+ - The shift in `x` and `y` relative to the center of the screen (`{ x: 0, y: 0 }`)
 
 #### props.buttons
 
