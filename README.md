@@ -6,7 +6,7 @@ React component for dialog widget.
 
 React Dialog is available as an [npm package](https://www.npmjs.org/package/react-dialog).
 ```sh
-npm install react-dialog
+npm install react-dialog-1
 ```
 
 Use [browserify](http://browserify.org/) and [reactify](https://github.com/andreypopp/reactify) for dependency management and JSX transformation.
@@ -21,8 +21,8 @@ All styles written in CSS and are in css/index.css
 
 ```javascript
 import React, { Component } from 'react'
-import Dialog from 'react-dialog'
-import 'react-dialog/css/index.css'
+import Dialog from 'react-dialog-1'
+import 'react-dialog-1/css/index.css'
 
 class Example extends Component {
   state = {
